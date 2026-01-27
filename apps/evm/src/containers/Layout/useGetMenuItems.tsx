@@ -15,6 +15,8 @@ const useGetMenuItems = () => {
   const swapRouteEnabled = useIsFeatureEnabled({ name: 'swapRoute' });
   const vaiRouteEnabled = useIsFeatureEnabled({ name: 'vaiRoute' });
   const bridgeRouteEnabled = useIsFeatureEnabled({ name: 'bridgeRoute' });
+  const governanceRouteEnabled = useIsFeatureEnabled({ name: 'governanceRoute' });
+  const vaultsRouteEnabled = useIsFeatureEnabled({ name: 'vaultsRoute' });
   const { importablePositionsCount } = useGetProfitableImports();
   const { homePagePath } = useGetHomePagePath();
   const { data: getPoolsData } = useGetPools();
@@ -66,13 +68,15 @@ const useGetMenuItems = () => {
     );
   }
 
-  menuItems.push({
-    to: routes.vaults.path,
-    // Translation key: do not remove this comment
-    // t('layout.menuItems.vaults')
-    i18nKey: 'layout.menuItems.vaults',
-    iconName: 'vault',
-  });
+  if (vaultsRouteEnabled) {
+    menuItems.push({
+      to: routes.vaults.path,
+      // Translation key: do not remove this comment
+      // t('layout.menuItems.vaults')
+      i18nKey: 'layout.menuItems.vaults',
+      iconName: 'vault',
+    });
+  }
 
   if (swapRouteEnabled) {
     menuItems.push({
@@ -84,13 +88,15 @@ const useGetMenuItems = () => {
     });
   }
 
-  menuItems.push({
-    to: routes.governance.path,
-    // Translation key: do not remove this comment
-    // t('layout.menuItems.governance')
-    i18nKey: 'layout.menuItems.governance',
-    iconName: 'market',
-  });
+  if (governanceRouteEnabled) {
+    menuItems.push({
+      to: routes.governance.path,
+      // Translation key: do not remove this comment
+      // t('layout.menuItems.governance')
+      i18nKey: 'layout.menuItems.governance',
+      iconName: 'market',
+    });
+  }
 
   if (vaiRouteEnabled) {
     menuItems.push({
