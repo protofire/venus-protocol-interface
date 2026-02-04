@@ -12,6 +12,24 @@ import type { PoolConfig, TokenFile } from './types';
 import { writeBarrelFile } from './writeBarrelFile';
 import { writeVTokens } from './writeVTokens';
 
+// Optional override for BSC Testnet Core Pool (e.g. pre-release/fork with different comptroller + lens)
+const bscTestnetCorePoolConfig =
+  process.env.BSC_TESTNET_CORE_LENS && process.env.BSC_TESTNET_CORE_COMPTROLLER
+    ? [
+        {
+          venusLensContractAddress: process.env.BSC_TESTNET_CORE_LENS as Address,
+          unitrollerContractAddress: process.env.BSC_TESTNET_CORE_COMPTROLLER as Address,
+          useComptrollerGetAllMarkets: true,
+        },
+      ]
+    : [
+        {
+          venusLensContractAddress: venusProtocolBscTestnetDeployments.addresses.VenusLens as Address,
+          unitrollerContractAddress: venusProtocolBscTestnetDeployments.addresses
+            .Unitroller_Proxy as Address,
+        },
+      ];
+
 // BSC-only fork: Only BSC mainnet and testnet configurations
 const poolConfigs: PoolConfig[] = [
   {
@@ -32,11 +50,7 @@ const poolConfigs: PoolConfig[] = [
   },
   {
     configs: [
-      {
-        venusLensContractAddress: venusProtocolBscTestnetDeployments.addresses.VenusLens as Address,
-        unitrollerContractAddress: venusProtocolBscTestnetDeployments.addresses
-          .Unitroller_Proxy as Address,
-      },
+      ...bscTestnetCorePoolConfig,
       {
         poolLensContractAddress: isolatedPoolsBscTestnetDeployments.addresses.PoolLens as Address,
         poolRegistryContractAddress: isolatedPoolsBscTestnetDeployments.addresses

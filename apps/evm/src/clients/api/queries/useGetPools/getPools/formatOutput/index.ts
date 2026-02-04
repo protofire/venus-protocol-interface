@@ -82,9 +82,8 @@ export const formatOutput = ({
       }
 
       // Get underlyingPriceMantissa from the tokens metadata
-      const correspondingOraclePrice = tokenPricesMapping[
-        market.underlyingAddress.toLowerCase()
-      ].find(
+      const tokenPrices = tokenPricesMapping[market.underlyingAddress.toLowerCase()];
+      const correspondingOraclePrice = tokenPrices?.find(
         p =>
           p.priceOracleAddress &&
           areAddressesEqual(apiPool.priceOracleAddress, p.priceOracleAddress),

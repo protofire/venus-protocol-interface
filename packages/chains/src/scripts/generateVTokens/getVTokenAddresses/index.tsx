@@ -5,41 +5,68 @@ import type { PoolConfig } from '../types';
 import { abi as poolLensAbi } from './poolLensAbi';
 import { abi as venusLensAbi } from './venusLensAbi';
 
+const comptrollerGetAllMarketsAbi = [
+  {
+    inputs: [],
+    name: 'getAllMarkets',
+    outputs: [{ name: '', type: 'address[]' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+] as const;
+
 export const getVTokenAddresses = async ({ poolConfig }: { poolConfig: PoolConfig }) => {
   const publicClient = createPublicClient({ chainId: poolConfig.chainId });
 
+  const contracts = poolConfig.configs.map(config => {
+    if ('venusLensContractAddress' in config) {
+      if (config.useComptrollerGetAllMarkets) {
+        return {
+          address: config.unitrollerContractAddress,
+          abi: comptrollerGetAllMarketsAbi,
+          functionName: 'getAllMarkets' as const,
+          args: [] as const,
+        };
+      }
+      return {
+        address: config.venusLensContractAddress,
+        abi: venusLensAbi,
+        functionName: 'getAllPoolsData' as const,
+        args: [config.unitrollerContractAddress] as const,
+      };
+    }
+    return {
+      address: config.poolLensContractAddress,
+      abi: poolLensAbi,
+      functionName: 'getAllPools' as const,
+      args: [config.poolRegistryContractAddress] as const,
+    };
+  });
+
   const results = await publicClient.multicall({
-    contracts: poolConfig.configs.map(config =>
-      'venusLensContractAddress' in config
-        ? ({
-            address: config.venusLensContractAddress,
-            abi: venusLensAbi,
-            functionName: 'getAllPoolsData',
-            args: [config.unitrollerContractAddress],
-          } as const)
-        : ({
-            address: config.poolLensContractAddress,
-            abi: poolLensAbi,
-            functionName: 'getAllPools',
-            args: [config.poolRegistryContractAddress],
-          } as const),
-    ),
+    contracts,
     allowFailure: false,
   });
 
   const vTokenAddresses: Address[] = [];
 
-  results.forEach(result => {
+  results.forEach((result, i) => {
     if (!result) {
+      return;
+    }
+    const config = poolConfig.configs[i];
+    const useComptroller =
+      'venusLensContractAddress' in config && config.useComptrollerGetAllMarkets;
+
+    if (useComptroller && Array.isArray(result)) {
+      vTokenAddresses.push(...(result as Address[]));
       return;
     }
 
     vTokenAddresses.push(
-      ...result.flatMap(result =>
-        ('markets' in result ? result.markets : result.vTokens).reduce<Address[]>(
-          (acc, m) =>
-            // Filter out unlisted markets
-            m.isListed ? [...acc, m.vToken] : acc,
+      ...result.flatMap(r =>
+        ('markets' in r ? r.markets : r.vTokens).reduce<Address[]>(
+          (acc, m) => (m.isListed ? [...acc, m.vToken] : acc),
           [],
         ),
       ),

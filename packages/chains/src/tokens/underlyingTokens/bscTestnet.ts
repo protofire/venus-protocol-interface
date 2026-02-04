@@ -378,4 +378,29 @@ export const bscTestnet: Token[] = [
     symbol: 'U',
     iconSrc: iconSrcs.u,
   },
+  // Pre-release fork underlyings (so generate-v-tokens can resolve vUSDC, vUSDT, vUSDe, vsUSDe)
+  {
+    address: '0x79002fE79BAEde2394FEd970a4fbEcb0a215596F',
+    decimals: 18,
+    symbol: 'USDC',
+    iconSrc: iconSrcs.usdc,
+  },
+  {
+    address: '0xa626F94e58A953fe62d0750a5dEEF7d0AbD65740',
+    decimals: 18,
+    symbol: 'USDT',
+    iconSrc: iconSrcs.usdt,
+  },
+  {
+    address: '0x3d08b2Dd26ec2c9A3e41bAb2c1C8c6bB254558f8',
+    decimals: 18,
+    symbol: 'USDe',
+    iconSrc: iconSrcs.usde,
+  },
+  {
+    address: '0xF7FA63229c0c4Bd98c18d020E1642949aFB32125',
+    decimals: 18,
+    symbol: 'WBNB',
+    iconSrc: iconSrcs.wbnb,
+  },
 ];
