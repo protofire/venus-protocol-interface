@@ -1,6 +1,7 @@
-import { ChainId, bnbChainMainnetFermiUpgradeTimestampMs } from '@venusprotocol/chains';
-import { addresses } from 'libs/contracts/generated/addresses';
+import type { ChainId } from '@venusprotocol/chains';
 import type { Address } from 'viem';
+
+import { addresses } from 'libs/contracts/generated/addresses';
 
 export type UniqueContractName = keyof typeof addresses.uniques;
 export type UniquePerPoolContractName = keyof typeof addresses.uniquesPerPool;
@@ -32,16 +33,6 @@ export const getContractAddress = (input: GetContractAddressInput) => {
         ]
       : undefined;
   }
-
-  // TEMPORARY FIX: remove once Fermi upgrade is live
-  if (
-    input.name === 'VenusLens' &&
-    input.chainId === ChainId.BSC_MAINNET &&
-    new Date().getTime() > bnbChainMainnetFermiUpgradeTimestampMs
-  ) {
-    return '0x969a45F1bb5Ba4037CB44664135862D0c2226F89';
-  }
-  // END TEMPORARY FIX
 
   const contractAddresses = addresses.uniques[input.name];
   return contractAddresses[input.chainId];

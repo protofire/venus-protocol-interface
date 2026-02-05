@@ -73,9 +73,10 @@ export const writeVTokens = async ({
     const vTokenAddress = vTokenAddresses[i / 2];
 
     if (!symbol) {
-      throw new Error(
+      process.emitWarning(
         `Failed to fetch vToken symbol. Chain ID: ${chainId} Address: ${vTokenAddress}`,
       );
+      continue;
     }
 
     if (underlyingTokenIndex < 0) {

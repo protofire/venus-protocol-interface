@@ -1,5 +1,23 @@
 # @venusprotocol/chains
 
+## 0.20.0
+
+### Minor Changes
+
+- c42dee1: add PT-clisBNBx-25JUN2026 token record
+
+## 0.19.1
+
+### Patch Changes
+
+- b0ac390: do not block build pipeline when vToken is missing
+
+## 0.19.0
+
+### Minor Changes
+
+- 3f5c86c: remove temporary fix for the updated VenusLens contract address
+
 ## 0.18.0
 
 ### Minor Changes

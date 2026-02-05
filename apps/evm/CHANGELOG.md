@@ -1,5 +1,34 @@
 # @venusprotocol/evm
 
+## 3.92.0
+
+### Minor Changes
+
+- f3171ff: Add yield-to-maturity APY
+
+## 3.91.0
+
+### Minor Changes
+
+- cd640f6: fix logic to determine if user has enabled asset as collateral
+
+## 3.90.0
+
+### Minor Changes
+
+- 3f5c86c: remove temporary fix for the updated VenusLens contract address
+
+### Patch Changes
+
+- Updated dependencies [3f5c86c]
+  - @venusprotocol/chains@0.19.0
+
+## 3.89.1
+
+### Patch Changes
+
+- 8441a51: update VenusLens contract address
+
 ## 3.89.0
 
 ### Minor Changes

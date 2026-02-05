@@ -46,7 +46,6 @@ export const bscTestnet: Token[] = [
     symbol: 'BUSD',
     iconSrc: iconSrcs.busd,
   },
-
   {
     address: '0xA808e341e8e723DC6BA0Bb5204Bafc2330d7B8e4',
     decimals: 18,

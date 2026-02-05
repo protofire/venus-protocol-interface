@@ -1,4 +1,4 @@
-import { ChainId, bnbChainMainnetFermiUpgradeTimestampMs } from '@venusprotocol/chains';
+import { ChainId } from '@venusprotocol/chains';
 import { addresses } from 'libs/contracts/generated/addresses';
 
 import { getContractAddress } from '..';
@@ -39,27 +39,5 @@ describe('getContractAddress', () => {
     });
 
     expect(result).toBeUndefined();
-  });
-
-  it('returns the temporary VenusLens address after the Fermi upgrade timestamp', () => {
-    vi.useFakeTimers().setSystemTime(new Date(bnbChainMainnetFermiUpgradeTimestampMs + 1000));
-
-    const result = getContractAddress({
-      name: 'VenusLens',
-      chainId: ChainId.BSC_MAINNET,
-    });
-
-    expect(result).toBe('0x969a45F1bb5Ba4037CB44664135862D0c2226F89');
-  });
-
-  it('returns the standard VenusLens address before the Fermi upgrade timestamp', () => {
-    vi.useFakeTimers().setSystemTime(new Date(bnbChainMainnetFermiUpgradeTimestampMs - 1000));
-
-    const result = getContractAddress({
-      name: 'VenusLens',
-      chainId: ChainId.BSC_MAINNET,
-    });
-
-    expect(result).toBe(addresses.uniques.VenusLens[ChainId.BSC_MAINNET]);
   });
 });
