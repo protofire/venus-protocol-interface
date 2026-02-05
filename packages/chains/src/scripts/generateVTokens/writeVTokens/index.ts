@@ -80,9 +80,10 @@ export const writeVTokens = async ({
     }
 
     if (underlyingTokenIndex < 0) {
-      process.emitWarning(
-        `Could not find underlying token for vToken ${symbol}. Chain ID: ${chainId} Address: ${vTokenAddress}`,
-      );
+      // throw new Error(
+      //   `Could not find underlying token for vToken ${symbol}. Chain ID: ${chainId} Address: ${vTokenAddress}`,
+      // );
+      console.log(`Could not find underlying token for vToken ${symbol}. Chain ID: ${chainId} Address: ${vTokenAddress}`);
       continue;
     }
 

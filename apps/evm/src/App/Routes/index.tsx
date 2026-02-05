@@ -34,6 +34,8 @@ const AppRoutes = () => {
   const primeCalculatorEnabled = useIsFeatureEnabled({
     name: 'primeCalculator',
   });
+  const governanceRouteEnabled = useIsFeatureEnabled({ name: 'governanceRoute' });
+  const vaultsRouteEnabled = useIsFeatureEnabled({ name: 'vaultsRoute' });
   const { homePagePath } = useGetHomePagePath();
 
   // Scroll to the top of the page on route change
@@ -109,53 +111,59 @@ const AppRoutes = () => {
           />
         )}
 
-        <Route path={Subdirectory.VAULTS}>
-          <Route
-            index
-            element={
-              <PageSuspense>
-                <Vaults />
-              </PageSuspense>
-            }
-          />
-        </Route>
+        {vaultsRouteEnabled && (
+          <Route path={Subdirectory.VAULTS}>
+            <Route
+              index
+              element={
+                <PageSuspense>
+                  <Vaults />
+                </PageSuspense>
+              }
+            />
+          </Route>
+        )}
 
-        {/* TODO: refactor to use nested routes (see VEN-2235) */}
-        <Route
-          path={`${routes.governance.path}/*`}
-          element={
-            <PageSuspense>
-              <Governance />
-            </PageSuspense>
-          }
-        />
+        {governanceRouteEnabled && (
+          <>
+            {/* TODO: refactor to use nested routes (see VEN-2235) */}
+            <Route
+              path={`${routes.governance.path}/*`}
+              element={
+                <PageSuspense>
+                  <Governance />
+                </PageSuspense>
+              }
+            />
 
-        <Route
-          path={routes.governanceLeaderBoard.path}
-          element={
-            <PageSuspense>
-              <VoterLeaderboard />
-            </PageSuspense>
-          }
-        />
+            <Route
+              path={routes.governanceLeaderBoard.path}
+              element={
+                <PageSuspense>
+                  <VoterLeaderboard />
+                </PageSuspense>
+              }
+            />
 
-        <Route
-          path={routes.governanceVoter.path}
-          element={
-            <PageSuspense>
-              <Voter />
-            </PageSuspense>
-          }
-        />
+            <Route
+              path={routes.governanceVoter.path}
+              element={
+                <PageSuspense>
+                  <Voter />
+                </PageSuspense>
+              }
+            />
 
-        <Route
-          path={routes.governanceProposal.path}
-          element={
-            <PageSuspense>
-              <Proposal />
-            </PageSuspense>
-          }
-        />
+            <Route
+              path={routes.governanceProposal.path}
+              element={
+                <PageSuspense>
+                  <Proposal />
+                </PageSuspense>
+              }
+            />
+          </>
+        )}
 
         {swapRouteEnabled && (
           <Route

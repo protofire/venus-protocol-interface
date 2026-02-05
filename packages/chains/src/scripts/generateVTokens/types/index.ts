@@ -11,6 +11,8 @@ export interface TokenFile {
 export interface LegacyPoolConfig {
   venusLensContractAddress: Address;
   unitrollerContractAddress: Address;
+  /** When true, use comptroller.getAllMarkets() instead of VenusLens (e.g. pre-release lens ABI mismatch) */
+  useComptrollerGetAllMarkets?: boolean;
 }
 
 export interface IsolatedPoolConfig {

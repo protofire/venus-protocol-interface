@@ -53,7 +53,8 @@ export const chains: Record<ChainId, Chain> = {
         blockTimeMs: 450,
       },
     ],
-    corePoolComptrollerContractAddress: '0x94d1820b2D1c7c7452A163983Dc888CEC546b77D',
+    // Pre-release/fork: matches venus-api Core Pool comptroller so Core pool page shows API pool
+    corePoolComptrollerContractAddress: '0x9B4dd254f2Fd9123F41bFb089FbC0beE5F07f5B3',
     nativeToken: bnb,
   },
   [ChainId.OPBNB_MAINNET]: {

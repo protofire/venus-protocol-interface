@@ -2,34 +2,28 @@ import { useChainId } from 'libs/wallet';
 import { ChainId } from 'types';
 
 export const featureFlags = {
-  integratedSwap: [ChainId.SEPOLIA],
-  prime: [
-    ChainId.BSC_MAINNET,
-    ChainId.BSC_TESTNET,
-    ChainId.SEPOLIA,
-    ChainId.ETHEREUM,
-    ChainId.ARBITRUM_SEPOLIA,
-    ChainId.ARBITRUM_ONE,
-    ChainId.ZKSYNC_SEPOLIA,
-    ChainId.ZKSYNC_MAINNET,
-    ChainId.OPTIMISM_MAINNET,
-    ChainId.OPTIMISM_SEPOLIA,
-  ],
-  primeCalculator: [
-    ChainId.BSC_MAINNET,
-    ChainId.BSC_TESTNET,
-    ChainId.ETHEREUM,
-    ChainId.SEPOLIA,
-    ChainId.ARBITRUM_SEPOLIA,
-  ],
+  // DISABLED FOR FORK - Swap feature
+  integratedSwap: [],
+  // DISABLED FOR FORK - Prime feature
+  prime: [],
+  // DISABLED FOR FORK - Prime calculator
+  primeCalculator: [],
   tusdMigrationWarning: [ChainId.BSC_MAINNET],
   trxMigrationWarning: [ChainId.BSC_MAINNET],
   sxpDisablingWarning: [ChainId.BSC_MAINNET],
   bethUpdateWarning: [ChainId.BSC_MAINNET],
-  vaiRoute: [ChainId.BSC_MAINNET, ChainId.BSC_TESTNET],
-  swapRoute: [ChainId.BSC_TESTNET],
-  createProposal: [ChainId.BSC_MAINNET, ChainId.BSC_TESTNET],
-  voteProposal: [ChainId.BSC_MAINNET, ChainId.BSC_TESTNET],
+  // DISABLED FOR FORK - VAI stablecoin route
+  vaiRoute: [],
+  // DISABLED FOR FORK - Swap route
+  swapRoute: [],
+  // DISABLED FOR FORK - Governance proposal creation
+  createProposal: [],
+  // DISABLED FOR FORK - Governance voting
+  voteProposal: [],
+  // DISABLED FOR FORK - Governance route (entire page)
+  governanceRoute: [],
+  // DISABLED FOR FORK - Vaults/XVS staking route
+  vaultsRoute: [],
   apyCharts: [
     ChainId.BSC_MAINNET,
     ChainId.BSC_TESTNET,
@@ -64,24 +58,8 @@ export const featureFlags = {
     ChainId.UNICHAIN_MAINNET,
     ChainId.UNICHAIN_SEPOLIA,
   ],
-  bridgeRoute: [
-    ChainId.BSC_MAINNET,
-    ChainId.BSC_TESTNET,
-    ChainId.ETHEREUM,
-    ChainId.SEPOLIA,
-    ChainId.OPBNB_MAINNET,
-    ChainId.OPBNB_TESTNET,
-    ChainId.ARBITRUM_SEPOLIA,
-    ChainId.ARBITRUM_ONE,
-    ChainId.ZKSYNC_SEPOLIA,
-    ChainId.ZKSYNC_MAINNET,
-    ChainId.OPTIMISM_MAINNET,
-    ChainId.OPTIMISM_SEPOLIA,
-    ChainId.BASE_MAINNET,
-    ChainId.BASE_SEPOLIA,
-    ChainId.UNICHAIN_SEPOLIA,
-    ChainId.UNICHAIN_MAINNET,
-  ],
+  // DISABLED FOR FORK - Bridge route
+  bridgeRoute: [],
   wrapUnwrapNativeToken: [
     ChainId.BSC_MAINNET,
     ChainId.BSC_TESTNET,
