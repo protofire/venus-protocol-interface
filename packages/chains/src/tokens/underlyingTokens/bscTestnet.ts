@@ -399,7 +399,7 @@ export const bscTestnet: Token[] = [
   {
     address: '0xF7FA63229c0c4Bd98c18d020E1642949aFB32125',
     decimals: 18,
-    symbol: 'WBNB',
-    iconSrc: iconSrcs.wbnb,
+    symbol: 'sUSDe',
+    iconSrc: iconSrcs.sUsdE,
   },
 ];

@@ -100,7 +100,9 @@ import venusProtocolArbitrumSepoliaDeployments from '@venusprotocol/venus-protoc
 import venusProtocolBaseMainnetDeployments from '@venusprotocol/venus-protocol/deployments/basemainnet_addresses.json';
 import venusProtocolBaseSepoliaDeployments from '@venusprotocol/venus-protocol/deployments/basesepolia_addresses.json';
 import venusProtocolBscMainnetDeployments from '@venusprotocol/venus-protocol/deployments/bscmainnet_addresses.json';
-import venusProtocolBscTestnetDeployments from '@venusprotocol/venus-protocol/deployments/bsctestnet_addresses.json';
+// FIXME: Temporary Fix - use custom deployments for fork (avoid patching node_modules)
+// import venusProtocolBscTestnetDeployments from '@venusprotocol/venus-protocol/deployments/bsctestnet_addresses.json';
+import venusProtocolBscTestnetDeployments from '../../../../../../deployments/bsctestnet_addresses.json';
 import venusProtocolEthereumDeployments from '@venusprotocol/venus-protocol/deployments/ethereum_addresses.json';
 import venusProtocolOpBnbMainnetDeployments from '@venusprotocol/venus-protocol/deployments/opbnbmainnet_addresses.json';
 import venusProtocolOpBnbTestnetDeployments from '@venusprotocol/venus-protocol/deployments/opbnbtestnet_addresses.json';

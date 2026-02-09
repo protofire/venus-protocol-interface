@@ -3,7 +3,9 @@
 import isolatedPoolsBscMainnetDeployments from '@venusprotocol/isolated-pools/deployments/bscmainnet_addresses.json';
 import isolatedPoolsBscTestnetDeployments from '@venusprotocol/isolated-pools/deployments/bsctestnet_addresses.json';
 import venusProtocolBscMainnetDeployments from '@venusprotocol/venus-protocol/deployments/bscmainnet_addresses.json';
-import venusProtocolBscTestnetDeployments from '@venusprotocol/venus-protocol/deployments/bsctestnet_addresses.json';
+// FIXME: Temporary Fix - use custom deployments for fork (avoid patching node_modules)
+// import venusProtocolBscTestnetDeployments from '@venusprotocol/venus-protocol/deployments/bsctestnet_addresses.json';
+import venusProtocolBscTestnetDeployments from '../../../../../deployments/bsctestnet_addresses.json';
 import type { Address } from 'viem';
 
 import { ChainId } from '../../types';
