@@ -29,7 +29,7 @@ export interface Config {
 const environment: Environment = envVariables.VITE_ENV || 'preview';
 const network: Network = envVariables.VITE_NETWORK || 'mainnet';
 
-const apiUrl = apiUrls[network];
+const apiUrl = envVariables.VITE_API_URL || apiUrls[network];
 
 const keys = {
   nodeRealApiKey: envVariables.VITE_NODE_REAL_API_KEY,
