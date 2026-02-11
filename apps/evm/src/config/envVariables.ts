@@ -4,6 +4,8 @@ export const envVariables = {
   VITE_ENV: typeof process !== 'undefined' ? process.env.VITE_ENV : import.meta.env.VITE_ENV,
   VITE_NETWORK:
     typeof process !== 'undefined' ? process.env.VITE_NETWORK : import.meta.env.VITE_NETWORK,
+  VITE_API_URL:
+    typeof process !== 'undefined' ? process.env.VITE_API_URL : import.meta.env.VITE_API_URL,
 
   // Third-parties
   VITE_SENTRY_DSN:
