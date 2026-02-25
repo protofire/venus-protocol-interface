@@ -6,7 +6,6 @@ import { ProbableBanner } from './ProbableBanner';
 
 export const AdBanner: React.FC = () => {
   const slides: React.ReactNode[] = [
-    <BoostBanner />,
     <BinanceWalletBanner />,
     <IsolatedPoolsSunsetBanner />,
     <ProbableBanner />,
