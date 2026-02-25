@@ -57,14 +57,15 @@ const useGetMenuItems = () => {
         i18nKey: 'layout.menuItems.account',
         iconName: 'person',
       },
-      {
-        to: routes.port.path,
-        // Translation key: do not remove this comment
-        // t('layout.menuItems.port')
-        i18nKey: 'layout.menuItems.port',
-        iconName: 'download',
-        badgeNumber: importablePositionsCount || undefined,
-      },
+      // Port Functionality is disabled
+      // {
+      //   to: routes.port.path,
+      //   // Translation key: do not remove this comment
+      //   // t('layout.menuItems.port')
+      //   i18nKey: 'layout.menuItems.port',
+      //   iconName: 'download',
+      //   badgeNumber: importablePositionsCount || undefined,
+      // },
     );
   }
 
