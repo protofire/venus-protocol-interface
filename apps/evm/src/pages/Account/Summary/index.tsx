@@ -62,14 +62,14 @@ export const Summary: React.FC<SummaryProps> = ({
     },
   ];
 
-  if (totalVaultStakeCents) {
+  if (totalVaultStakeCents?.isGreaterThan(0)) {
     cells.push({
       label: t('account.summary.cellGroup.totalVaultStake'),
       value: formatCentsToReadableValue({ value: totalVaultStakeCents }),
     });
   }
 
-  if (totalVaiBorrowBalanceCents) {
+  if (totalVaiBorrowBalanceCents.isGreaterThan(0)) {
     cells.push({
       label: t('account.summary.cellGroup.mintedVai'),
       value: formatCentsToReadableValue({ value: totalVaiBorrowBalanceCents }),
