@@ -100,12 +100,18 @@ export const Account: React.FC = () => {
       id: 'pools',
       content: <Pools pools={pools} />,
     },
-    {
+  ];
+
+  // Hide Vaults tab when user has no staking positions (API can still return vaults with 0 stake)
+  const hasVaultPositions = vaults.some(vault => vault.userStakedMantissa?.isGreaterThan(0));
+
+  if (hasVaultPositions) {
+    tabs.push({
       title: t('account.tabs.vaults'),
       id: 'vaults',
       content: <Vaults vaults={vaults} />,
-    },
-  ];
+    });
+  }
 
   if (isHistoricalTransactionsFeatureEnabled) {
     tabs.push({
