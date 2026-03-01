@@ -100,12 +100,16 @@ export const Account: React.FC = () => {
       id: 'pools',
       content: <Pools pools={pools} />,
     },
-    {
+  ];
+
+  // Hide Vaults tab when there are no vaults in this environment
+  if (vaults.length > 0) {
+    tabs.push({
       title: t('account.tabs.vaults'),
       id: 'vaults',
       content: <Vaults vaults={vaults} />,
-    },
-  ];
+    });
+  }
 
   if (isHistoricalTransactionsFeatureEnabled) {
     tabs.push({
