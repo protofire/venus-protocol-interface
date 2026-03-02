@@ -1,4 +1,5 @@
 import { cn, theme } from '@venusprotocol/ui';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { useGetVTokenApySimulations } from 'clients/api';
 import { ChartTooltipContent, ChartYAxisTick, Spinner } from 'components';
 import { useTranslation } from 'libs/translations';
@@ -36,6 +37,8 @@ export const InterestRateChart: React.FC<InterestRateChartProps> = ({
   isIsolatedPoolMarket,
 }) => {
   const { t } = useTranslation();
+  const muiTheme = useTheme();
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
   const styles = useStyles();
 
   const {
@@ -176,6 +179,16 @@ export const InterestRateChart: React.FC<InterestRateChartProps> = ({
                     // styles.referenceLineLabel because its type is not accepted for
                     // that
                     label={Object.assign(styles.referenceLineLabel || {}, {
+                      // On small screens, when utilization is near 100% the label can overflow
+                      // past the right margin and get clipped. Flip the label offset to keep it
+                      // readable.
+                      position: {
+                        y: -10,
+                        x:
+                          isMobile && interestRateChartData.currentUtilizationRatePercentage >= 90
+                            ? -48
+                            : 48,
+                      },
                       value: t('interestRateChart.currentUtilizationRateLabelValue', {
                         percentage: formatPercentageToReadableValue(
                           interestRateChartData.currentUtilizationRatePercentage,
