@@ -397,7 +397,7 @@ export const bscTestnet: Token[] = [
     iconSrc: iconSrcs.usde,
   },
   {
-    address: '0x0F7F52BC469e7AbB27908F3281B385848A7a6181',
+    address: '0x272F93A421d9FFc8147DA4D99671650A67A0f190',
     decimals: 18,
     symbol: 'sUSDe',
     iconSrc: iconSrcs.sUsdE,
